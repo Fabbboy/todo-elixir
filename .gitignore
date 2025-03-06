@@ -27,3 +27,5 @@ todo-*.tar
 
 dist/
 .elixir_ls/
+*.sqlite3*
+priv/dist/

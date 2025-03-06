@@ -1,9 +1,11 @@
 defmodule Todo.Router do
   use Plug.Router
 
+  plug(Todo.LoggingPlug)
+
   plug(Plug.Static,
     at: "/",
-    from: Path.expand("dist"),
+    from: "priv/dist",
     gzip: false
   )
 
@@ -12,13 +14,11 @@ defmodule Todo.Router do
 
   forward("/api", to: Todo.Api.Router)
 
-  get "/" do
-    conn
-    |> put_resp_content_type("text/html")
-    |> send_file(200, Path.expand("dist/index.html"))
+  match "/" do
+    send_file(conn, 200, "priv/dist/index.html")
   end
 
   match _ do
-    send_file(conn, 404, "dist/404.html")
+    send_file(conn, 404, "priv/dist/404.html")
   end
 end

@@ -7,6 +7,7 @@ defmodule Todo.Supervisor do
 
   def init(_) do
     children = [
+      Todo.Repo,
       {Bandit, plug: {Todo.Router, []}, scheme: :http, port: 4000}
     ]
 
