@@ -9,10 +9,11 @@ sudo apt update
 sudo apt install git elixir erlang
 ```
 
-After that install hex package manager and the packages
+After that install hex package manager and the packages and apply migrations
 ```
 mix local.hex
 mix deps.get
+mix ecto.migrate
 ```
 
 Compile and run using:
