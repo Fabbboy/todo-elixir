@@ -1,21 +1,23 @@
-# Todo
+# Todo App using Elixir and NextJS
 
-**TODO: Add description**
+## Install and Run
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `todo` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:todo, "~> 0.1.0"}
-  ]
-end
+You need the Erlang Runtime and Elixir compiler
+```
+sudo add-apt-repository ppa:rabbitmq/rabbitmq-erlang
+sudo apt update
+sudo apt install git elixir erlang
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/todo>.
+After that install hex package manager and the packages
+```
+mix local.hex
+mix deps.get
+```
+
+Compile and run using:
+```
+mix run --no-halt
+```
+
 
