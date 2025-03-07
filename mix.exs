@@ -24,7 +24,8 @@ defmodule Todo.MixProject do
     [
       {:bandit, "~> 1.0"},
       {:ecto, "~> 3.10"},
-      {:ecto_sqlite3, "~> 0.17"}
+      {:ecto_sqlite3, "~> 0.17"},
+      {:jason, "~> 1.4"}
     ]
   end
 end

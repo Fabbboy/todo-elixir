@@ -12,7 +12,7 @@ defmodule Todo.Router do
   plug(:match)
   plug(:dispatch)
 
-  forward("/api", to: Todo.Api.Router)
+  forward("/todos", to: Todo.Api.Router)
 
   match "/" do
     send_file(conn, 200, "priv/dist/index.html")
