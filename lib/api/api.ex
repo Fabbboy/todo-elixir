@@ -29,7 +29,7 @@ defmodule Todo.Api.Router do
     json(conn, Todo.Items.get_all())
   end
 
-  put "/:id" do
+  patch "/:id" do
     with {:ok, todo_item} <- Todo.Items.check_todo(conn.params["id"]) do
       json(conn, Map.put(todo_item, :message, "Todo checked!"))
     else
