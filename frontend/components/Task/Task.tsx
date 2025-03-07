@@ -1,27 +1,31 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Todo } from "@/lib/task";
-import { Checkbox } from "@/components/ui/checkbox";
+import type React from "react"
+import type { Todo } from "@/lib/task"
+import { Checkbox } from "@/components/ui/checkbox"
 
 type Props = {
-  todo: Todo;
-  toggleTodo: (id: number) => void;
-};
+  todo: Todo
+  toggleTodo: (id: number) => void
+}
 
 const TodoItem: React.FC<Props> = ({ todo, toggleTodo }) => {
   return (
-    <Card className="bg-neutral-800 text-neutral-100 p-4 mb-4">
-      <CardContent className="flex flex-row items-center justify-between">
-        <div className="flex flex-row gap-4 items-center">
-          <p className="text-lg font-normal">{todo.title}</p>
-          <p className="text-sm font-normal">{todo.inserted_at}</p>
-        </div>
-        <Checkbox
-          checked={todo.completed}
-          onCheckedChange={() => toggleTodo(todo.id)}
-        />
-      </CardContent>
-    </Card>
-  );
-};
+    <div className="flex items-center justify-between py-2 px-3 mb-1 rounded-md hover:bg-accent/50 transition-colors">
+      <div className="flex items-center gap-3 flex-1 min-w-0">
+        <p
+          className={`text-base truncate ${todo.completed ? "line-through text-muted-foreground" : "text-foreground"}`}
+        >
+          {todo.title}
+        </p>
+        <span className="text-xs text-muted-foreground ml-auto shrink-0">{todo.inserted_at}</span>
+      </div>
+      <Checkbox
+        className="h-4 w-4 ml-2 shrink-0"
+        checked={todo.completed}
+        onCheckedChange={() => toggleTodo(todo.id)}
+      />
+    </div>
+  )
+}
 
-export default TodoItem;
+export default TodoItem
+
