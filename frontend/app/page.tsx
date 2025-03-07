@@ -43,6 +43,15 @@ export default function Home() {
     }
   };
 
+  const removeTodo = async (id: number) => {
+    try {
+      await axios.delete(`/todos/${id}`);
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    } catch (error) {
+      console.error("Failed to delete todo:", error);
+    }
+  }
+
   useEffect(() => {
     const fetchTodos = async () => {
       try {
@@ -67,7 +76,7 @@ export default function Home() {
       <main className="flex-grow p-6">
         {todos.length > 0 ? (
           todos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
+            <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} deleteTask={removeTodo} />
           ))
         ) : (
           <div className="text-center py-10 text-muted-foreground">
